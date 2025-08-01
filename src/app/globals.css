@@ -1,3 +1,99 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant light (&:where(.light, .light *));
+
+:root {
+    --header-height: 64px;
+    --header-spacing-top: 12px;
+    --header-spacing-bottom: 12px;
+    --total-header-height: calc(var(--header-height) + var(--header-spacing-top) + var(--header-spacing-bottom));
+}
+
+@theme {
+    --font-anton: var(--font-anton);
+}
+
+/* Square animations for hero background */
+@keyframes square-float {
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-15px) rotate(5deg) scale(1.05);
+        opacity: 1;
+    }
+}
+
+@keyframes square-float-delay {
+    0%,
+    100% {
+        transform: translateY(0px) rotate(45deg) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-20px) rotate(50deg) scale(0.95);
+        opacity: 0.9;
+    }
+}
+
+@keyframes square-float-slow {
+    0%,
+    100% {
+        transform: translateY(0px) rotate(90deg) scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-10px) rotate(95deg) scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+@keyframes square-float-fast {
+    0%,
+    100% {
+        transform: translateY(0px) rotate(180deg) scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-25px) rotate(185deg) scale(0.9);
+        opacity: 1;
+    }
+}
+
+@keyframes square-float-reverse {
+    0%,
+    100% {
+        transform: translateY(-10px) rotate(30deg) scale(0.95);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(10px) rotate(25deg) scale(1.05);
+        opacity: 0.5;
+    }
+}
+
+.animate-square-float {
+    animation: square-float 8s ease-in-out infinite;
+}
+
+.animate-square-float-delay {
+    animation: square-float-delay 6s ease-in-out infinite;
+    animation-delay: -2s;
+}
+
+.animate-square-float-slow {
+    animation: square-float-slow 12s ease-in-out infinite;
+    animation-delay: -4s;
+}
+
+.animate-square-float-fast {
+    animation: square-float-fast 4s ease-in-out infinite;
+    animation-delay: -1s;
+}
+
+.animate-square-float-reverse {
+    animation: square-float-reverse 7s ease-in-out infinite;
+    animation-delay: -3s;
+}

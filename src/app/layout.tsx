@@ -1,21 +1,16 @@
 import type { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { Anton } from 'next/font/google';
 
 import { ThemeProvider } from 'next-themes';
 
 import '@/app/globals.css';
 
-const geistSans = localFont({
-    src: './fonts/GeistVF.woff',
-    variable: '--font-geist-sans',
-    weight: '100 900'
-});
-const geistMono = localFont({
-    src: './fonts/GeistMonoVF.woff',
-    variable: '--font-geist-mono',
-    weight: '100 900'
+const anton = Anton({
+    weight: '400',
+    subsets: ['latin'],
+    variable: '--font-anton'
 });
 
 export const metadata: Metadata = {
@@ -28,8 +23,10 @@ const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
         // ? https://github.com/pacocoursey/next-themes?tab=readme-ov-file#with-app
         // ? https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors
         <html suppressHydrationWarning lang='en'>
-            <body className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground antialiased`}>
-                <ThemeProvider attribute='class'>{children}</ThemeProvider>
+            <body className={`${anton.variable} bg-background text-foreground antialiased`}>
+                <ThemeProvider attribute='class' defaultTheme='dark'>
+                    <div className='main min-h-screen'>{children}</div>
+                </ThemeProvider>
             </body>
         </html>
     );
